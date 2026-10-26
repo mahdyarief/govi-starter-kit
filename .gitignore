@@ -22,5 +22,11 @@ server/bin
 server/internal/web/dist/*
 !server/internal/web/dist/.gitkeep
 
+# Local tooling state
+.omc
+.graft
+.trail
+.claude
+
 # Logs
 *.log
