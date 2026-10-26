@@ -27,6 +27,10 @@ server/internal/web/dist/*
 .graft
 .trail
 .claude
+.ignore
 
 # Logs
 *.log
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
