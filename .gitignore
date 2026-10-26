@@ -1,0 +1,26 @@
+# OS / editor
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Web
+web/node_modules
+web/dist
+web/.tanstack
+web/*.local
+
+# Server
+server/node_modules
+server/pnpm-lock.yaml
+server/bin
+server/internal/web/dist/*
+!server/internal/web/dist/.gitkeep
+
+# Logs
+*.log

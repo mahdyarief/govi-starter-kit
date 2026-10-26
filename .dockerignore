@@ -1,0 +1,23 @@
+# Build context is the repository root: the image needs both halves.
+.git
+.github
+.gitignore
+*.md
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output are rebuilt inside the image
+web/node_modules
+web/dist
+web/.tanstack
+server/bin
+server/internal/web/dist/*
+
+# Local tooling state
+.claude
+.omc
+graft
+.trail
+docs
+*.log

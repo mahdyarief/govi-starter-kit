@@ -1,0 +1,22 @@
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+.omc
+.windsurf/
+
+.env
+.ignore
+.trail/
+.adal/
+.cursor/
+.gemini/
+.grok/
+.kiro/
+
+GEMINI.md
+opencode.json
+copilot-*
+
+# The SPA build is copied in by `make build/web`; keep the embed directory.
+/internal/web/dist/*
+!/internal/web/dist/.gitkeep
+/bin/
