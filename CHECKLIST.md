@@ -14,10 +14,8 @@ publik · **P2** nice to have
       `github.com/mahdyarief/govi-starter-kit`
 - [x] Deskripsi repo satu kalimat, menyebut stack dan sifat single-tenant
 - [x] Branch default `main`
-- [ ] **P0** LICENSE di root repo — saat ini hanya `server/LICENSE.md`
-      (MIT, © 2026 masb0ymas). GitHub tidak mendeteksinya (`license: null`)
-      karena file harus berada di root. Pindahkan ke `LICENSE` dan putuskan
-      pemegang copyright.
+- [x] LICENSE di root repo (`LICENSE`, MIT © 2026 mahdyarief dan masb0ymas
+      untuk template gofi/vine). `server/LICENSE.md` tetap dipertahankan.
 - [ ] **P1** Topik repo: `go`, `fiber`, `react`, `vite`, `tanstack-router`,
       `postgresql`, `starter-kit`, `shadcn-ui`
 - [ ] **P1** Tandai sebagai template (`is_template: true`) bila akan dipakai
@@ -35,7 +33,7 @@ publik · **P2** nice to have
 - [x] `.env.example` untuk `server/` dan `web/`
 - [x] `.coderabbit.yaml` dengan path_instructions Go, test, TS/TSX, dan MD
 - [x] `server/docs/agents/*` — catatan domain dan triage internal
-- [ ] **P0** `CONTRIBUTING.md` — setup, gaya commit, cara test/lint, aturan PR
+- [x] `CONTRIBUTING.md` — toolchain, setup, `make check`, gaya commit, aturan PR
 - [ ] **P1** `SECURITY.md` — jalur pelaporan celah, versi didukung, SLA respons
 - [ ] **P1** `CODE_OF_CONDUCT.md` (Contributor Covenant)
 - [ ] **P1** Dokumen arsitektur ringkas (diagram komponen + alur auth) atau ADR
@@ -65,13 +63,12 @@ publik · **P2** nice to have
 - [x] Validasi env/flag server (`log.Fatalf` untuk tipe salah)
 - [x] `APP_SECRET` minimal 32 karakter; debug ditolak di production
 - [x] Proxy Vite ke API (`VITE_API_PROXY_TARGET`)
-- [ ] **P0** Pin versi tool: `.nvmrc`/`.node-version`, `packageManager` +
-      `engines` di `web/package.json`, dan catatan versi Go. README menyebut
-      Node 22/pnpm 10, tapi tidak ada file yang menegakkannya
+- [x] Pin versi tool: `.nvmrc` (Node 22), `packageManager: pnpm@11.10.0` +
+      `engines` di `web/package.json`, dan catatan versi Go di README
 - [ ] **P1** `.editorconfig` dan `.gitattributes` (normalisasi LF) — keduanya
       belum ada
-- [ ] **P1** Target `make fmt` (gofmt + prettier) dan `make check`
-      (fmt-check + lint + test)
+- [x] Target `make fmt` (gofmt + prettier), `make audit` (gofi/vine), dan
+      `make check` (fmt-check + lint + test + audit)
 - [ ] **P1** Target `make seed` eksplisit di root — sekarang hanya lewat
       `SEED_ON_BOOT` / `server/Makefile` (`db/migrations/up/seed`)
 - [ ] **P2** `make setup` yang menyalin `.env.example` bila `.env` belum ada
@@ -110,8 +107,11 @@ ditolak.
 - [x] Error handler terpusat (`middlewares/catch_error.go`)
 - [x] Graceful shutdown (`signal.NotifyContext` untuk SIGINT/SIGTERM)
 - [x] Tidak ada `console.log` / `debugger` tertinggal di `web/src`
-- [ ] **P0** ESLint + Prettier (atau Biome) untuk `web/` — tidak ada config
-      maupun script lint/format sama sekali
+- [x] ESLint (flat config) + Prettier untuk `web/`; `pnpm lint`,
+      `pnpm format`, `pnpm format:check` hijau. Komponen vendor
+      `src/components/ui/*` memakai aturan yang dilonggarkan.
+- [x] Integrasi skill gofi/vine: dokumentasi di `CLAUDE.md` + `server/AGENTS.md`
+      dan `scripts/skill-audit.sh` untuk `make audit`
 - [ ] **P1** `golangci-lint` config (`.golangci.yml`)
 - [ ] **P1** Pre-commit hook (lefthook/husky) menjalankan fmt + lint
 - [ ] **P1** Coverage report Go + threshold minimum
@@ -142,8 +142,8 @@ ditolak.
 - [x] Image runtime distroless, nonroot, tanpa shell
 - [x] Password policy Authula: min 8 / max 128, reset link 1 jam, sesi dihapus
       saat ganti password, `BeforeSignIn` menolak email belum terverifikasi
-- [ ] **P0** Body limit pada request (`fiber.Config{BodyLimit: ...}`) — saat ini
-      tidak diset, jadi body besar diterima sampai batas fasthttp
+- [x] Body limit request: `fiber.Config{BodyLimit: 4 * 1024 * 1024}` (4 MiB)
+      eksplisit di `server/cmd/api/server.go`
 - [ ] **P1** Klarifikasi model auth frontend: access/refresh token disimpan di
       cookie yang bisa dibaca JavaScript (`token-storage.ts`) lalu dikirim
       sebagai `Authorization: Bearer` (`client-fetch.ts`). Ini menyimpang dari
@@ -152,8 +152,9 @@ ditolak.
       (b) dokumentasikan trade-off-nya secara eksplisit
 - [ ] **P1** `SECURITY.md` + alamat `security@`
 - [ ] **P1** Rotasi/penyimpanan secret terdokumentasi (bukan `.env` di server)
-- [ ] **P1** Parity env: `RATE_LIMIT_EXEMPT_IPS` dan `TRUSTED_PROXIES` dibaca
-      kode tapi tidak ada di `server/.env.example` maupun README
+- [x] Parity env: `RATE_LIMIT_EXEMPT_IPS` dan `TRUSTED_PROXIES` kini ada di
+      `server/.env.example` dan tabel `server/README.md`;
+      `check_env_sync.py` hijau (21/21)
 - [ ] **P2** Audit dependency otomatis (`govulncheck`, `pnpm audit`) di CI
 - [ ] **P2** Rate limit & idempotency pakai shared store (Redis) agar benar
       saat replica > 1 — sekarang in-memory per proses
@@ -218,8 +219,7 @@ ditolak.
 
 ## K. Lisensi & kepatuhan
 
-- [x] MIT di `server/LICENSE.md`
-- [ ] **P0** Pindahkan ke `LICENSE` di root agar GitHub mendeteksi
+- [x] MIT di `server/LICENSE.md` dan `LICENSE` di root (GitHub mendeteksi)
 - [ ] **P1** Pastikan kompatibilitas lisensi dependency (Authula, shadcn/ui)
 - [ ] **P2** `THIRD_PARTY_NOTICES.md` untuk dependency langsung
 - [ ] **P2** Pernyataan dukungan versi di `SECURITY.md`
@@ -253,8 +253,8 @@ ditolak.
 - [x] `server/docs/agents/*` mendokumentasikan alur kerja internal
 - [ ] **P1** Hapus aset mati: `server/public/static/images/golang.jpg` dan
       `server/templates/` (tidak direferensikan kode mana pun)
-- [ ] **P1** Selesaikan working tree: `M .gitignore` (`/graft/`) dan
-      `.ignore` (untracked) belum di-commit
+- [x] Working tree bersih untuk artefak tooling: `.gitignore` (`/graft/`) dan
+      `.ignore` sudah di-commit di `bb6d7ee`
 - [ ] **P2** Pastikan tidak ada direktori `node_modules`/`pnpm-lock.yaml` liar
       di `server/` yang ikut ter-track (saat ini `server/pnpm-lock.yaml`
       di-ignore, `server/node_modules` ada di disk)
@@ -265,19 +265,25 @@ ditolak.
 
 ## Ringkasan prioritas
 
-**P0 sebelum dipakai orang lain (7 item)**
+**P0 sebelum dipakai orang lain — selesai 5 dari 7**
+
+Sudah dikerjakan:
+
 1. LICENSE di root (item A; duplikat di bagian K menunjuk hal yang sama)
 2. `CONTRIBUTING.md`
 3. Pin versi tool (`.nvmrc`, `packageManager`, `engines`)
-4. CI `ci.yml` (vet + test + typecheck + build)
-5. `permissions:` minimal di setiap workflow
-6. ESLint + Prettier (atau Biome) untuk `web/`
-7. Body limit request (`fiber.Config{BodyLimit}`)
+4. ESLint + Prettier (atau Biome) untuk `web/`
+5. Body limit request (`fiber.Config{BodyLimit}`)
+
+Masih terbuka, keduanya menunggu scope token `gh`:
+
+6. CI `ci.yml` (vet + test + typecheck + build)
+7. `permissions:` minimal di setiap workflow
 
 **P1 sebelum rilis publik** — lihat item bertanda P1 di atas; yang paling
-berisiko: model token frontend (cookie vs bearer), parity env
-`RATE_LIMIT_EXEMPT_IPS`/`TRUSTED_PROXIES`, lint/format web, test frontend,
-meta/SEO, skip link, dan `HEALTHCHECK` image.
+berisiko: model token frontend (cookie vs bearer), test frontend, meta/SEO,
+skip link, dan `HEALTHCHECK` image. Parity env sudah beres dan lint/format web
+sudah terpasang.
 
 **Sudah kuat:** session cookie `HttpOnly`+`SameSite`+`Secure`, CSRF
 cross-origin guard, helmet, rate limit, idempotency ter-scope, graceful
