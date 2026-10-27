@@ -1,0 +1,7 @@
+dist
+node_modules
+.tanstack
+.omc
+coverage
+pnpm-lock.yaml
+src/routeTree.gen.ts

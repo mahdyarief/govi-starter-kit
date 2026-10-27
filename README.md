@@ -14,7 +14,9 @@ web/      React SPA (Vite, TanStack Router/Query/Form/Table, shadcn/ui)
 
 - Go 1.27.2 or newer (the module declares `go 1.27.2`; `GOTOOLCHAIN=auto`
   fetches it if your local Go is older)
-- Node 22 and pnpm 10+ (this repo pins pnpm through `corepack`)
+- Node 22 (see `.nvmrc`) and pnpm 11.10.0, pinned through
+  `web/package.json#packageManager`. Run pnpm via `corepack pnpm` — pnpm is not
+  assumed on your PATH.
 - PostgreSQL 18 — the migrations use `uuidv7()`
 - Docker, only if you want the bundled database
 
