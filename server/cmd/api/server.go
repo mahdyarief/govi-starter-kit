@@ -60,6 +60,9 @@ func newServer(app *app.Application) (*fiber.App, error) {
 		ReadTimeout:  15 * time.Second,
 		WriteTimeout: 30 * time.Second,
 		IdleTimeout:  60 * time.Second,
+		// Reject oversized request bodies before they are read into memory.
+		// Fiber's own default is 4 MiB; keeping it explicit documents the cap.
+		BodyLimit: 4 * 1024 * 1024,
 	})
 
 	// Middleware

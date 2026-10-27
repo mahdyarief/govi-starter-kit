@@ -28,6 +28,7 @@ secret is passed as a process argument.
 | `DB_DSN`                                 | PostgreSQL URL. `AUTHULA_DATABASE_URL` must not be set.                                                                                                              |
 | `DB_MAX_OPEN_CONNS`, `DB_MAX_IDLE_CONNS` | The whole replica's budget: Authula's pool takes half, the API's the rest.                                                                                           |
 | `TRUSTED_PROXIES`                        | IPs or CIDRs of the reverse proxy. The client IP (rate limits) is the rightmost `X-Forwarded-For` entry that is not one of them.                                     |
+| `RATE_LIMIT_EXEMPT_IPS`                  | Comma-separated client IPs that skip the rate limiter. Empty limits every client; only meaningful behind a trusted proxy.                                            |
 | `MIGRATE_ON_BOOT`                        | Apply the embedded migrations before serving.                                                                                                                        |
 | `SEED_ON_BOOT`                           | Run the seeders before serving; needs `SUPER_USER`.                                                                                                                  |
 | `SUPER_USER`                             | `email:password`, password of 12 to 128 characters.                                                                                                                  |
