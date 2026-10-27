@@ -39,3 +39,28 @@ re-read whole files.
 After big code changes, refresh the graph with `trail build` (deterministic,
 no API key, $0).
 <!-- trail:end -->
+
+## gofi — the shape of this server
+
+`server/` is a gofi project. Use the `gofi` plugin's skills rather than
+inventing a layout:
+
+- `gofi:layers` — add a resource: migration pair, model, repository, dtos,
+  handler, and factory registration.
+- `gofi:maintenance` — env parity and health checks.
+- `gofi:deploy` — the distroless image and runtime config.
+
+Two audits keep the layers honest; both run from the repo root:
+
+```sh
+make audit                                      # all four checks
+python3 "$AI_CODING_SKILLS_DIR/gofi"/*/skills/layers/scripts/audit_layers.py --root .
+```
+
+The layer rules they enforce: no fiber imports in `internal/models` or
+`internal/repositories`, no `database/sql` in handlers/dtos, no env or flag
+parsing inside `internal/config`, no raw SQL outside repositories, seeders,
+migrations and `cmd/`, and every migration has its up/down pair.
+
+The API's own response shape is `{data, metadata?, message?}` via `dtos`.
+Authula endpoints are the exception — never wrap them.

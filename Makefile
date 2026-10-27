@@ -55,11 +55,32 @@ build-web:
 test:
 	cd $(SERVER_DIR) && go test ./...
 
-## lint: vet the Go code and typecheck the web app
+## lint: vet the Go code, lint and typecheck the web app
 .PHONY: lint
 lint:
 	cd $(SERVER_DIR) && go vet ./...
+	cd $(WEB_DIR) && $(PNPM) lint
 	cd $(WEB_DIR) && $(PNPM) exec tsc --noEmit
+
+## fmt: format the web app with Prettier and the Go code with gofmt
+.PHONY: fmt
+fmt:
+	cd $(WEB_DIR) && $(PNPM) format
+	cd $(SERVER_DIR) && gofmt -w .
+
+## audit: run the gofi and vine layer/env audits (needs the ai-coding-skills plugin)
+.PHONY: audit
+audit:
+	./scripts/skill-audit.sh
+
+## check: everything CI would run — format check, lint, tests, skill audits
+.PHONY: check
+check:
+	cd $(WEB_DIR) && $(PNPM) format:check
+	cd $(SERVER_DIR) && gofmt -l . | tee /tmp/govi-gofmt.out && test ! -s /tmp/govi-gofmt.out
+	$(MAKE) lint
+	$(MAKE) test
+	$(MAKE) audit
 
 ## db-up: start PostgreSQL in the background
 .PHONY: db-up

@@ -25,17 +25,44 @@ is embedded into the API binary, so production is one artifact.
 - **Docker context is the repo root.** The Dockerfile needs `web/` and
   `server/`; build with `docker build -f server/Dockerfile .`.
 
+## Skills: gofi and vine
+
+The repo follows two OpenClaude plugins from the `ai-coding-skills` marketplace
+(`gofi@ai-coding-skills`, `vine@ai-coding-skills`). Both halves are already
+shaped by them, so use the matching skill when adding a resource instead of
+inventing a new layout.
+
+- **gofi** owns `server/`: `scaffold` (new project), `layers` (a new
+  handler/repository/migration slice), `deploy`, `maintenance`.
+- **vine** owns `web/`: `scaffold`, `layers` (a new
+  `models → dtos → services → queries` slice), `deploy`, `maintenance`.
+
+Their audits run from this repo, so layer drift fails the same way a test does:
+
+```sh
+make audit    # gofi + vine audit_layers.py and check_env_sync.py
+make check    # format check, lint, tests, then the audits
+```
+
+`scripts/skill-audit.sh` resolves the installed plugin version at runtime and
+skips a check with a notice when a plugin is absent, so the repo still builds
+on a machine without the plugins. Override the cache root with
+`AI_CODING_SKILLS_DIR` if the plugins live elsewhere.
+
 ## Verify before finishing
 
 ```sh
 make test                                  # go test ./...
-make lint                                  # go vet + tsc --noEmit
+make lint                                  # go vet + eslint + tsc --noEmit
+make fmt                                   # prettier --write + gofmt -w
+make audit                                 # gofi/vine layer and env checks
 cd server && go build ./...
 cd web && corepack pnpm build
 ```
 
-The API integration test in `server/cmd/api` runs only when `TEST_DB_DSN`
-points at a disposable PostgreSQL 18 database.
+`make check` runs all of the above except the builds. The API integration test
+in `server/cmd/api` runs only when `TEST_DB_DSN` points at a disposable
+PostgreSQL 18 database.
 
 ## Where to change things
 
