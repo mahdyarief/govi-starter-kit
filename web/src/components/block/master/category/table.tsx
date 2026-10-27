@@ -29,7 +29,7 @@ export default function CategoryTable() {
       limit,
       ...(debouncedSearch ? { search: debouncedSearch } : {}),
     }),
-    [offset, limit, debouncedSearch]
+    [offset, limit, debouncedSearch],
   )
 
   const { data, isFetching, isLoading, isError, error } = useQuery(queries.categories.list(params))

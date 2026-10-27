@@ -22,7 +22,7 @@ export default function SectionCard({ title, description, toolbar, children }: S
       <CardHeader
         className={cn(
           'flex flex-col items-stretch gap-3 lg:flex-row lg:items-center',
-          description ? 'min-h-22' : 'min-h-15'
+          description ? 'min-h-22' : 'min-h-15',
         )}
       >
         <CardHeading className="min-w-0 flex-1">

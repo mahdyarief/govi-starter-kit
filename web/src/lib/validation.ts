@@ -39,5 +39,5 @@ export const optionalString = (attribute: string) =>
  */
 export const requiredEnum = <const T extends readonly [string, ...string[]]>(
   values: T,
-  attribute: string
+  attribute: string,
 ) => z.enum(values, { error: `The selected ${attribute} is invalid.` })

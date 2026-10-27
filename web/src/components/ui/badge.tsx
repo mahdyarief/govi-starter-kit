@@ -163,7 +163,7 @@ const badgeVariants = cva(
       appearance: 'default',
       size: 'md',
     },
-  }
+  },
 )
 
 const badgeButtonVariants = cva(
@@ -177,7 +177,7 @@ const badgeButtonVariants = cva(
     defaultVariants: {
       variant: 'default',
     },
-  }
+  },
 )
 
 function Badge({

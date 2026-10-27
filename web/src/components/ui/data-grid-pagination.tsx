@@ -114,7 +114,7 @@ function DataGridPagination({
           }}
         >
           {i + 1}
-        </Button>
+        </Button>,
       )
     }
     return buttons
@@ -168,7 +168,7 @@ function DataGridPagination({
       data-slot="data-grid-pagination"
       className={cn(
         'flex grow flex-col flex-wrap items-center justify-between gap-2.5 py-2.5 sm:flex-row sm:py-0',
-        mergedProps?.className
+        mergedProps?.className,
       )}
     >
       <div className="order-2 flex flex-wrap items-center space-x-2.5 pb-2.5 sm:order-1 sm:pb-0">

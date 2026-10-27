@@ -27,7 +27,7 @@ export default function SubmitButton({
       type="submit"
       className={cn(
         'text-off-white bg-obsidian-black hover:bg-obsidian-black/80 h-10 rounded-lg px-6 transition-colors',
-        className
+        className,
       )}
       disabled={isSubmitting}
       {...props}

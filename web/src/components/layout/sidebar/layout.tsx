@@ -57,7 +57,7 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
             const displaySegment = capitalizeFirstLetter(segment)
 
             const matchUUID = segment.match(
-              /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+              /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i,
             )
 
             const newSegment = matchUUID ? '...' + displaySegment.slice(-8) : displaySegment

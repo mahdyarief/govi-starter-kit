@@ -46,7 +46,7 @@ function DropdownMenuSubTrigger({
         'data-[here=true]:bg-accent data-[here=true]:text-foreground',
         '[&_svg:not([role=img]):not([class*=text-])]:opacity-60 [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0',
         inset && 'ps-8',
-        className
+        className,
       )}
       {...props}
     >
@@ -68,7 +68,7 @@ function DropdownMenuSubContent({
       data-slot="dropdown-menu-sub-content"
       className={cn(
         'border-border bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] space-y-0.5 overflow-hidden rounded-md border p-2 shadow-md shadow-black/5',
-        className
+        className,
       )}
       {...props}
     />
@@ -87,7 +87,7 @@ function DropdownMenuContent({
         sideOffset={sideOffset}
         className={cn(
           'border-border bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] space-y-0.5 overflow-hidden rounded-md border p-2 shadow-md shadow-black/5',
-          className
+          className,
         )}
         {...props}
       />
@@ -118,7 +118,7 @@ function DropdownMenuItem({
         inset && 'ps-8',
         variant === 'destructive' &&
           'text-destructive hover:text-destructive focus:text-destructive hover:bg-destructive/5 focus:bg-destructive/5 data-[active=true]:bg-destructive/5',
-        className
+        className,
       )}
       {...props}
     />
@@ -136,7 +136,7 @@ function DropdownMenuCheckboxItem({
       data-slot="dropdown-menu-checkbox-item"
       className={cn(
         'focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center rounded-md py-1.5 ps-8 pe-2 text-sm outline-hidden transition-colors select-none data-disabled:pointer-events-none data-disabled:opacity-50',
-        className
+        className,
       )}
       checked={checked}
       {...props}
@@ -161,7 +161,7 @@ function DropdownMenuRadioItem({
       data-slot="dropdown-menu-radio-item"
       className={cn(
         'focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center rounded-md py-1.5 ps-6 pe-2 text-sm outline-hidden transition-colors select-none data-disabled:pointer-events-none data-disabled:opacity-50',
-        className
+        className,
       )}
       {...props}
     >
@@ -188,7 +188,7 @@ function DropdownMenuLabel({
       className={cn(
         'text-muted-foreground px-2 py-1.5 text-xs font-medium',
         inset && 'ps-8',
-        className
+        className,
       )}
       {...props}
     />

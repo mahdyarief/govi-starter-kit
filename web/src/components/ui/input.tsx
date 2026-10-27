@@ -26,7 +26,7 @@ const inputVariants = cva(
     defaultVariants: {
       variant: 'md',
     },
-  }
+  },
 )
 
 const inputAddonVariants = cva(
@@ -48,7 +48,7 @@ const inputAddonVariants = cva(
       variant: 'md',
       mode: 'default',
     },
-  }
+  },
 )
 
 const inputGroupVariants = cva(
@@ -75,7 +75,7 @@ const inputGroupVariants = cva(
   {
     variants: {},
     defaultVariants: {},
-  }
+  },
 )
 
 const inputWrapperVariants = cva(
@@ -125,7 +125,7 @@ const inputWrapperVariants = cva(
     defaultVariants: {
       variant: 'md',
     },
-  }
+  },
 )
 
 function Input({

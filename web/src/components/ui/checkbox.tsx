@@ -25,7 +25,7 @@ const checkboxVariants = cva(
     defaultVariants: {
       size: 'md',
     },
-  }
+  },
 )
 
 function Checkbox({

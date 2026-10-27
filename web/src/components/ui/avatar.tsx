@@ -20,7 +20,7 @@ const avatarStatusVariants = cva(
     defaultVariants: {
       variant: 'online',
     },
-  }
+  },
 )
 
 function Avatar({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Root>) {
@@ -54,7 +54,7 @@ function AvatarFallback({
       data-slot="avatar-fallback"
       className={cn(
         'border-border bg-accent text-accent-foreground flex h-full w-full items-center justify-center rounded-full border text-xs',
-        className
+        className,
       )}
       {...props}
     />

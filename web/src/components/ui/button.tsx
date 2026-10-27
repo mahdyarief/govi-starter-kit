@@ -371,7 +371,7 @@ const buttonVariants = cva(
       radius: 'md',
       appearance: 'default',
     },
-  }
+  },
 )
 
 function Button({
@@ -410,7 +410,7 @@ function Button({
           underline,
           className,
         }),
-        asChild && props.disabled && 'pointer-events-none opacity-50'
+        asChild && props.disabled && 'pointer-events-none opacity-50',
       )}
       {...(selected && { 'data-state': 'open' })}
       {...props}

@@ -8,7 +8,7 @@ import { format as formatDateFn } from 'date-fns'
  */
 export function formatDate(
   date: Date | string | number | null | undefined,
-  formatStr?: string
+  formatStr?: string,
 ): string {
   if (!date) return '-'
   return formatDateFn(date, formatStr || 'dd/MM/yyyy')

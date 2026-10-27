@@ -42,7 +42,7 @@ export function CategoryColumn({ loading }: BaseColumnProps) {
         minSize: 160,
       },
     ],
-    [loading]
+    [loading],
   )
 
   return columns

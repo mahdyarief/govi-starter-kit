@@ -26,7 +26,7 @@ export default function IconBadge({
       className={cn(
         'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
         toneClasses[variant],
-        className
+        className,
       )}
     >
       <Icon className={cn('h-4 w-4', iconClassName)} />

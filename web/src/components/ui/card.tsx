@@ -46,7 +46,7 @@ const cardHeaderVariants = cva(
     defaultVariants: {
       variant: 'default',
     },
-  }
+  },
 )
 
 const cardContentVariants = cva('grow p-5', {

@@ -29,25 +29,25 @@ Vite writes to `dist/`. The root `make build` copies that directory into
 
 ## Environment
 
-| Variable | Notes |
-| --- | --- |
-| `VITE_APP_NAME` | Shown in the document title and the sign-in card |
-| `VITE_API_URL` | API origin. Empty means same origin, which is what the embedded build uses |
-| `VITE_API_PROXY_TARGET` | Dev-only proxy target for `/api` |
+| Variable                | Notes                                                                      |
+| ----------------------- | -------------------------------------------------------------------------- |
+| `VITE_APP_NAME`         | Shown in the document title and the sign-in card                           |
+| `VITE_API_URL`          | API origin. Empty means same origin, which is what the embedded build uses |
+| `VITE_API_PROXY_TARGET` | Dev-only proxy target for `/api`                                           |
 
 ## Layout
 
-| Path | What lives there |
-| --- | --- |
-| `src/routes` | File-based TanStack Router routes; `__root.tsx` holds the shell |
-| `src/components/ui` | shadcn/ui primitives |
-| `src/components/layout` | Sidebar, header, page shell |
-| `src/components/block` | Feature blocks (auth, dashboard, master data) |
-| `src/lib/api/models` | Response models, one file per resource |
-| `src/lib/api/dtos` | Zod schemas and inferred form DTOs |
-| `src/lib/api/services` | Axios resources; `clientResource(path, methods)` builds the CRUD set |
-| `src/lib/api/queries` | TanStack Query options and invalidation |
-| `src/lib/auth` | Session handling and token storage |
+| Path                    | What lives there                                                     |
+| ----------------------- | -------------------------------------------------------------------- |
+| `src/routes`            | File-based TanStack Router routes; `__root.tsx` holds the shell      |
+| `src/components/ui`     | shadcn/ui primitives                                                 |
+| `src/components/layout` | Sidebar, header, page shell                                          |
+| `src/components/block`  | Feature blocks (auth, dashboard, master data)                        |
+| `src/lib/api/models`    | Response models, one file per resource                               |
+| `src/lib/api/dtos`      | Zod schemas and inferred form DTOs                                   |
+| `src/lib/api/services`  | Axios resources; `clientResource(path, methods)` builds the CRUD set |
+| `src/lib/api/queries`   | TanStack Query options and invalidation                              |
+| `src/lib/auth`          | Session handling and token storage                                   |
 
 ## Adding a resource
 

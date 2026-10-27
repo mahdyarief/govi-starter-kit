@@ -61,7 +61,7 @@ function DataGridTableBase({ children }: { children: ReactNode }) {
         'text-foreground w-full caption-bottom text-left align-middle text-sm font-normal rtl:text-right',
         !props.tableLayout?.columnsDraggable && 'border-separate border-spacing-0',
         props.tableLayout?.width === 'fixed' ? 'table-fixed' : 'table-auto',
-        props.tableClassNames?.base
+        props.tableClassNames?.base,
       )}
     >
       {children}
@@ -76,7 +76,7 @@ function DataGridTableHead({ children }: { children: ReactNode }) {
     <thead
       className={cn(
         props.tableClassNames?.header,
-        props.tableLayout?.headerSticky && props.tableClassNames?.headerSticky
+        props.tableLayout?.headerSticky && props.tableClassNames?.headerSticky,
       )}
     >
       {children}
@@ -102,7 +102,7 @@ function DataGridTableHeadRow<TData extends RowData>({
         props.tableLayout?.cellBorder && '[&_>:last-child]:border-e-0',
         props.tableLayout?.stripped && 'bg-transparent',
         props.tableLayout?.headerBackground === false && 'bg-transparent',
-        props.tableClassNames?.headerRow
+        props.tableClassNames?.headerRow,
       )}
     >
       {children}
@@ -156,7 +156,7 @@ function DataGridTableHeadRowCell<TData extends RowData>({
         column.getIndex() === 0 ||
           column.getIndex() === (header.headerGroup?.headers.length ?? 0) - 1
           ? props.tableClassNames?.edgeCell
-          : ''
+          : '',
       )}
     >
       {children}
@@ -197,7 +197,7 @@ function DataGridTableBody({ children }: { children: ReactNode }) {
         '[&_tr:last-child]:border-0',
         props.tableLayout?.rowRounded &&
           '[&_td:first-child]:rounded-s-lg [&_td:last-child]:rounded-e-lg',
-        props.tableClassNames?.body
+        props.tableClassNames?.body,
       )}
     >
       {children}
@@ -219,7 +219,7 @@ function DataGridTableBodyRowSkeleton({ children }: { children: ReactNode }) {
         props.tableLayout?.cellBorder && '[&_>:last-child]:border-e-0',
         props.tableLayout?.stripped && 'odd:bg-muted/90 odd:hover:bg-muted hover:bg-transparent',
         table.options.enableRowSelection && '[&_>:first-child]:relative',
-        props.tableClassNames?.bodyRow
+        props.tableClassNames?.bodyRow,
       )}
     >
       {children}
@@ -252,7 +252,7 @@ function DataGridTableBodyRowSkeletonCell<TData extends RowData>({
           '[&[data-pinned][data-last-col]]:border-border data-pinned:bg-background/90 data-pinned:backdrop-blur-xs" [&[data-pinned=left][data-last-col=left]]:border-e! [&[data-pinned=right][data-last-col=right]]:border-s!',
         column.getIndex() === 0 || column.getIndex() === table.getVisibleFlatColumns().length - 1
           ? props.tableClassNames?.edgeCell
-          : ''
+          : '',
       )}
     >
       {children}
@@ -288,7 +288,7 @@ function DataGridTableBodyRow<TData extends RowData>({
         props.tableLayout?.cellBorder && '[&_>:last-child]:border-e-0',
         props.tableLayout?.stripped && 'odd:bg-muted/90 odd:hover:bg-muted hover:bg-transparent',
         table.options.enableRowSelection && '[&_>:first-child]:relative',
-        props.tableClassNames?.bodyRow
+        props.tableClassNames?.bodyRow,
       )}
     >
       {children}
@@ -354,7 +354,7 @@ function DataGridTableBodyRowCell<TData extends RowData>({
           '[&[data-pinned][data-last-col]]:border-border data-pinned:bg-background/90 data-pinned:backdrop-blur-xs" [&[data-pinned=left][data-last-col=left]]:border-e! [&[data-pinned=right][data-last-col=right]]:border-s!',
         column.getIndex() === 0 || column.getIndex() === row.getVisibleCells().length - 1
           ? props.tableClassNames?.edgeCell
-          : ''
+          : '',
       )}
     >
       {children}
@@ -419,7 +419,7 @@ function DataGridTableRowSelect<TData extends RowData>({
       <div
         className={cn(
           'bg-primary absolute start-0 top-0 bottom-0 hidden w-[2px]',
-          row.getIsSelected() && 'block'
+          row.getIsSelected() && 'block',
         )}
       ></div>
       <Checkbox

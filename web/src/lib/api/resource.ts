@@ -48,7 +48,7 @@ export function clientResource<
 export function resource<TPath extends string, TMethods extends readonly HTTP_METHOD[], TData>(
   fetchInstance: AxiosInstance,
   path: TPath,
-  methods: TMethods
+  methods: TMethods,
 ): ResourceMethods<TData> {
   const fetchApi = fetchInstance
   const api: Partial<ResourceMethods<TData>> = {}
@@ -119,7 +119,7 @@ export function resource<TPath extends string, TMethods extends readonly HTTP_ME
  */
 export function resources<TPaths extends string[], TMethods extends readonly HTTP_METHOD[], TData>(
   paths: TPaths,
-  methods: TMethods
+  methods: TMethods,
 ): Partial<ResourceMethods<TData>>[] {
   return paths.map((path) => resource(api, path, methods))
 }
