@@ -27,7 +27,7 @@ declare module '@tanstack/react-router' {
   }
 }
 
-function App() {
+export function App() {
   return <RouterProvider router={router} />
 }
 
@@ -36,5 +36,5 @@ createRoot(document.getElementById('root')!).render(
     <ReactQueryProvider>
       <App />
     </ReactQueryProvider>
-  </StrictMode>
+  </StrictMode>,
 )

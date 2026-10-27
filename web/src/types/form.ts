@@ -13,7 +13,7 @@ type Mutation<TVariables, TResponse = TVariables> = UseMutationResult<
 
 export interface BaseAbstractForm<TModel, TMutation, TDto, TResponse = TMutation> {
   defaultValues: TModel
-  schema: z.ZodType<TDto, TDto, any>
+  schema: z.ZodType<TDto, TDto>
   mutation: Mutation<TMutation, TResponse>
   isEdit?: boolean
 }

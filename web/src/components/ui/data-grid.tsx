@@ -8,8 +8,8 @@ import { createContext, type ReactNode, useContext } from 'react'
 
 import { cn } from '@/lib/utils'
 
+/* eslint-disable @typescript-eslint/no-unused-vars -- module augmentation must mirror the original generic parameters */
 declare module '@tanstack/react-table' {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<
     TFeatures extends import('@tanstack/react-table').TableFeatures,
     TData extends RowData,
@@ -23,6 +23,7 @@ declare module '@tanstack/react-table' {
     expandedContent?: (row: TData) => ReactNode
   }
 }
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 export type DataGridApiFetchParams = {
   pageIndex: number

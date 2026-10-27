@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/incompatible-library */
-
 'use client'
 
 import {
@@ -124,7 +122,10 @@ export default function ReactTable<T extends RowData>({
 
   return (
     <DataGrid
-      table={table as unknown as ReactTable<any, any>}
+      // DataGrid's prop type is pinned to ReactTable<any, T>, which is not
+      // assignable from the feature-typed table TanStack v9 returns.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      table={table as unknown as ReactTable<any, T>}
       recordCount={total}
       tableLayout={{
         columnsVisibility: true,
